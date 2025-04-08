@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0oun3wh0x3m3"]
+
+[ext_resource type="Script" uid="uid://b3k053706oya0" path="res://Scripts/Selector.cs" id="1_pmct4"]
+[ext_resource type="CylinderMesh" uid="uid://dtrw1rnunuwrh" path="res://battle/slecting/selector.tres" id="2_rj1yu"]
+[ext_resource type="Script" uid="uid://bxwchdwnsmwox" path="res://Scripts/MaterialSwapper.cs" id="4_gxobg"]
+[ext_resource type="Material" uid="uid://70aln28mwj75" path="res://battle/slecting/unSelectedMaterial.tres" id="4_l5ci6"]
+[ext_resource type="Material" uid="uid://dbbeqvhvjvvjr" path="res://battle/slecting/selected.tres" id="4_s6w3u"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_nse74"]
+material = ExtResource("4_l5ci6")
+inner_radius = 0.723
+outer_radius = 0.692
+ring_segments = 3
+
+[node name="selector" type="Node3D"]
+script = ExtResource("1_pmct4")
+
+[node name="material_swapper" type="Node3D" parent="."]
+script = ExtResource("4_gxobg")
+Materials = Array[StandardMaterial3D]([ExtResource("4_l5ci6"), ExtResource("4_s6w3u")])
+
+[node name="indicator" type="MeshInstance3D" parent="material_swapper" groups=["MeshToSwap"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40915, 0)
+mesh = ExtResource("2_rj1yu")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="material_swapper" groups=["MeshToSwap"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84356, 0)
+mesh = SubResource("TorusMesh_nse74")
+skeleton = NodePath("../indicator")

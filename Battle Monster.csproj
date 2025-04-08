@@ -1,0 +1,39 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>BattleMonster</RootNamespace>
+	<LangVersion>11.0</LangVersion>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="battle\**" />
+    <EmbeddedResource Remove="battle\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="runOptions.runsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+  	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+  	<PackageReference Include="gdUnit4.api" Version="4.3.1" />
+  	<PackageReference Include="gdUnit4.test.adapter" Version="2.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tests\Scenes\battle_test.tscn" />
+    <None Include="Tests\Scenes\movement_test.tscn" />
+  </ItemGroup>
+
+</Project>

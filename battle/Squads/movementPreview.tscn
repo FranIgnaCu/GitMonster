@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5me004bugsss"]
+
+[ext_resource type="Script" uid="uid://beoxhsx4ujcs3" path="res://Scripts/Squads/MovementPreview.cs" id="1_fsnk3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82504"]
+
+[node name="SelectedTroopPreview2" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_fsnk3")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_82504")
+disabled = true

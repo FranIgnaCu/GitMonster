@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Battle Monster": {
+      "commandName": "Executable",
+      "executablePath": "/home/fran-pc-ubuntu/Programas/Godot/Godot_v4.4.1-stable_mono_linux.x86_64",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://clwoa5fjxyq3s"]
+
+[ext_resource type="PackedScene" uid="uid://clwoa5fjxyq3s" path="res://battle/FloorTiles/Modelos/modelsLib.tscn" id="1_xd2qf"]
+[ext_resource type="PackedScene" uid="uid://clwoa5fjxyq3s" path="res://battle/FloorTiles/Modelos/modelsLib.tscn" id="2_6m48g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqnvo"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="basicTile" parent="." instance=ExtResource("1_xd2qf")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="basicTile/normalTile" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="basicTile/normalTile/StaticBody3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_nqnvo")
+
+[node name="spawnTile" parent="." instance=ExtResource("2_6m48g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.3075)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="spawnTile/spawnTile" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3075)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawnTile/spawnTile/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_nqnvo")
+
+[editable path="basicTile"]
+[editable path="spawnTile"]

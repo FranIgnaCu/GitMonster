@@ -1,0 +1,9 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=3 uid="uid://dtrw1rnunuwrh"]
+
+[ext_resource type="Material" uid="uid://70aln28mwj75" path="res://battle/slecting/selectedMaterial.tres" id="1_2sfv1"]
+
+[resource]
+material = ExtResource("1_2sfv1")
+top_radius = 0.25
+bottom_radius = 0.0
+height = 0.5

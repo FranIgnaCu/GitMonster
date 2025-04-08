@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://txxupm31wptr"]
+
+[ext_resource type="Script" uid="uid://bfrnggi0exeyp" path="res://Scripts/Squads/Troops/Troop.cs" id="1_56exn"]
+[ext_resource type="PackedScene" uid="uid://b0oun3wh0x3m3" path="res://battle/slecting/selector.tscn" id="2_wfheo"]
+[ext_resource type="PackedScene" uid="uid://c5me004bugsss" path="res://battle/Squads/movementPreview.tscn" id="3_63xue"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70mad"]
+albedo_color = Color(0.129412, 0.121569, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2vylh"]
+material = SubResource("StandardMaterial3D_70mad")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o5y"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8d26m"]
+material = SubResource("StandardMaterial3D_i1o5y")
+top_radius = 0.501
+bottom_radius = 0.501
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1wu1h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ibrpj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7y2ba"]
+
+[node name="Troop" type="CharacterBody3D"]
+script = ExtResource("1_56exn")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="Node3D" parent="Pivot"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Character"]
+mesh = SubResource("CapsuleMesh_2vylh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Character/MeshInstance3D"]
+mesh = SubResource("CylinderMesh_8d26m")
+
+[node name="selector" parent="Pivot" instance=ExtResource("2_wfheo")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_1wu1h")
+
+[node name="BaseTroopPreview" parent="." instance=ExtResource("3_63xue")]
+visible = false
+
+[node name="Mesh" parent="BaseTroopPreview" index="0"]
+mesh = SubResource("CapsuleMesh_ibrpj")
+
+[node name="CollisionShape3D" parent="BaseTroopPreview" index="1"]
+shape = SubResource("CapsuleShape3D_7y2ba")
+
+[connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
+
+[editable path="BaseTroopPreview"]

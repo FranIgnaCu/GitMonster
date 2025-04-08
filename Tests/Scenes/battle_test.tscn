@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba2ovpce4w2gm"]
+
+[ext_resource type="PackedScene" uid="uid://txxupm31wptr" path="res://battle/Squads/Troops/troop.tscn" id="1_cw7kj"]
+[ext_resource type="PackedScene" uid="uid://hjj7ym8dv0jh" path="res://battle/Player/playerControl.tscn" id="2_whq4t"]
+[ext_resource type="Script" uid="uid://cundv2uxvr7yh" path="res://Scripts/Squads/Squad.cs" id="3_4a66v"]
+[ext_resource type="PlaneMesh" uid="uid://b6bgoxv2nb84t" path="res://battle/FloorTiles/Modelos/tile_test.tres" id="4_hqadi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fatj2"]
+size = Vector3(1000, 0, 1000)
+
+[node name="battleTest" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0120651, -0.47587, 0.879433, -0.00652792, 0.879516, 0.475825, -0.999906, -4.65705e-10, -0.0137179, 13.1883, 14.7727, 0)
+
+[node name="player" parent="." instance=ExtResource("2_whq4t")]
+
+[node name="Squad" type="Node3D" parent="."]
+script = ExtResource("3_4a66v")
+
+[node name="Pepe" parent="Squad" instance=ExtResource("1_cw7kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -4)
+
+[node name="Troop" parent="Squad" instance=ExtResource("1_cw7kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -14)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_fatj2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(508.849, 0, 0, 0, 1.00458, 0, 0, 0, 509.795, 0, 0, 0)
+mesh = ExtResource("4_hqadi")
