@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://qpi7gin2n7jf"]
+
+[ext_resource type="Script" uid="uid://mgltpd3k5xbd" path="res://addons/GD_NET_ScOUT/TestSceneRunner.cs" id="1_4hmty"]
+
+[node name="TestSceneRunner" type="Node2D"]
+script = ExtResource("1_4hmty")
+Scenes = []
+TestSceneDirectories = PackedStringArray()
+Verbose = false
+TestReportPath = "/home/fran-pc-ubuntu/Proyectos/Godot-Projects/GitMonster/Tests/TestResults/"

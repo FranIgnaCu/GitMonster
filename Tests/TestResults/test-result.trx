@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="da8efa6c-6b75-4004-8fea-943111a674e1" name="Admin@DESKTOP-0NDK0FC 2024-12-01 21:16:35" runUser="DESKTOP-0NDK0FC\Admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-12-01T21:16:35.1823677-03:00" queuing="2024-12-01T21:16:35.1823677-03:00" start="2024-12-01T21:16:33.9700955-03:00" finish="2024-12-01T21:16:35.1963752-03:00" />
+  <TestSettings name="default" id="8cd7a9f4-21fc-49a0-b5c1-f4886553aec0">
+    <Deployment runDeploymentRoot="Admin_DESKTOP-0NDK0FC_2024-12-01_21_16_35" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="67bedc36-2025-4714-9ac2-07ba6a5c8d42" testId="e08fdf37-a336-bd82-83f1-ac23dfd8feac" testName="StringToLower" computerName="DESKTOP-0NDK0FC" duration="00:00:00.0100000" startTime="2024-12-01T21:16:34.9715305-03:00" endTime="2024-12-01T21:16:34.9727090-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67bedc36-2025-4714-9ac2-07ba6a5c8d42" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="StringToLower" storage="d:\proyectos\godotgit\monsterbattler\.godot\mono\temp\bin\debug\battle monster.dll" id="e08fdf37-a336-bd82-83f1-ac23dfd8feac">
+      <Execution id="67bedc36-2025-4714-9ac2-07ba6a5c8d42" />
+      <TestMethod codeBase="D:\PROYECTOS\GODOTGIT\MONSTERBATTLER\.godot\mono\temp\bin\Debug\Battle Monster.dll" adapterTypeName="executor://gdunit4.testadapter/" className="Project.Position_Tests" name="StringToLower" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e08fdf37-a336-bd82-83f1-ac23dfd8feac" executionId="67bedc36-2025-4714-9ac2-07ba6a5c8d42" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>CheckGdUnit4ApiVersion gdUnit4Api, Version=4.3.1.0&#xD;
+Start executing tests, 2 TestCases total.&#xD;
+Current directory set to: D:\PROYECTOS\GODOTGIT\MONSTERBATTLER&#xD;
+Run with args  --path . res://gdunit4_testadapter/TestAdapterRunner.tscn --testadapter --configfile="D:\PROYECTOS\GODOTGIT\MONSTERBATTLER\GdUnitRunner_d5043b3a-3beb-4253-bbfa-1b17ea73f10c.cfg" &#xD;
+TestEventReportServer:: Wait for connecting GdUnit4 test report client.&#xD;
+TestEventReportServer:: TestAdapterReporter: Successfully connected to GdUnit4 test report server!&#xD;
+TestEventReportServer:: TestAdapterReporter: Disconnecting from GdUnit4 test report server.&#xD;
+Godot ends with exit code: 0&#xD;
+Run TestRunner ends with 0&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
