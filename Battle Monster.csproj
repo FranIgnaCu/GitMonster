@@ -35,5 +35,8 @@
     <None Include="Tests\Scenes\battle_test.tscn" />
     <None Include="Tests\Scenes\movement_test.tscn" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\AssertTools\" />
+  </ItemGroup>
 
 </Project>

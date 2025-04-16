@@ -19,7 +19,7 @@ public partial class Troop : CharacterBody3D, ISelectable, IClickable
 
     private Vector3 _targetVelocity = Vector3.Zero;
     private Selector _selector;
-    private Squad _group;
+    private Squad _squad;
     private Vector3 _targetPosition;
     
     public override void _Ready()
@@ -28,7 +28,7 @@ public partial class Troop : CharacterBody3D, ISelectable, IClickable
         _selector = GetNode<Selector>("Pivot/selector");
         _selector.ForObject(this);
         _preview = GetNode<MovementPreview>("BaseTroopPreview");
-        _group = (Squad)GetParentNode3D();
+        _squad = (Squad)GetParentNode3D();
 
         _targetPosition = GlobalPosition;
 
@@ -91,11 +91,11 @@ public partial class Troop : CharacterBody3D, ISelectable, IClickable
 
     public void InformSelected()
     {
-        _group.Selected(this);
+        _squad.Selected(this);
     }
     public void InformUnSelected()
     {
-        _group.UnSelected(this);
+        _squad.UnSelected(this);
     }
 
 

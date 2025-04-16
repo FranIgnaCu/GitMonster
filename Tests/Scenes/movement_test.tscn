@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhdymjfe0qd8d"]
+[gd_scene load_steps=11 format=3 uid="uid://bhdymjfe0qd8d"]
 
 [ext_resource type="Script" uid="uid://cundv2uxvr7yh" path="res://Scripts/Squads/Squad.cs" id="1_vq77m"]
 [ext_resource type="MeshLibrary" uid="uid://nv4eknvod564" path="res://battle/FloorTiles/Modelos/tilesLib1.tres" id="2_t7jbd"]
 [ext_resource type="PackedScene" uid="uid://txxupm31wptr" path="res://battle/Squads/Troops/troop.tscn" id="2_y7sml"]
+[ext_resource type="Script" uid="uid://bux5awi45tjf4" path="res://Tests/Scripts/TroopTest.cs" id="4_2b555"]
 [ext_resource type="PackedScene" uid="uid://hjj7ym8dv0jh" path="res://battle/Player/playerControl.tscn" id="4_8jf2n"]
 [ext_resource type="PlaneMesh" uid="uid://b6bgoxv2nb84t" path="res://battle/FloorTiles/Modelos/tile_test.tres" id="5_axitg"]
+[ext_resource type="PackedScene" uid="uid://ce83kbl7xjwpr" path="res://addons/GD_NET_ScOUT/test_runner.tscn" id="6_017mx"]
+[ext_resource type="PackedScene" uid="uid://dxrf7jv8o0yxk" path="res://Tests/AssertTools/zonaDeteccion.tscn" id="8_u552a"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_nwuy0"]
 
@@ -21,16 +24,26 @@ target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(0.494118, 0.133333, 0, 1)
 debug_shape_thickness = 3
 
+[node name="TestRunner" parent="playerControl/Camera3D" index="1" instance=ExtResource("6_017mx")]
+anchors_preset = -1
+anchor_top = 0.006
+anchor_right = 0.522
+anchor_bottom = 0.559
+offset_top = 0.112
+offset_right = -0.343994
+offset_bottom = -0.231995
+
 [node name="Squad" type="Node3D" parent="."]
 script = ExtResource("1_vq77m")
 
 [node name="BaseTroop" parent="Squad" instance=ExtResource("2_y7sml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_2b555")
 
-[node name="BaseTroop2" parent="Squad" instance=ExtResource("2_y7sml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)
+[node name="NonTestedTroop" parent="Squad" instance=ExtResource("2_y7sml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
 
-[node name="Mesh" parent="Squad/BaseTroop2/BaseTroopPreview" index="0"]
+[node name="Mesh" parent="Squad/NonTestedTroop/BaseTroopPreview" index="0"]
 mesh = SubResource("SphereMesh_nwuy0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -50,6 +63,32 @@ shape = SubResource("BoxShape3D_ey7o5")
 transform = Transform3D(508.849, 0, 0, 0, 1.00458, 0, 0, 0, 509.795, 0, 0, 0)
 mesh = ExtResource("5_axitg")
 
+[node name="Zones" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="South" parent="Zones" instance=ExtResource("8_u552a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="North" parent="Zones" instance=ExtResource("8_u552a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="West" parent="Zones" instance=ExtResource("8_u552a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="East" parent="Zones" instance=ExtResource("8_u552a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="BehindOtherTroop" parent="Zones" instance=ExtResource("8_u552a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[connection signal="body_entered" from="Zones/North" to="playerControl/Camera3D/TestRunner" method="_on_north_body_entered"]
+
 [editable path="playerControl"]
-[editable path="Squad/BaseTroop2"]
-[editable path="Squad/BaseTroop2/BaseTroopPreview"]
+[editable path="Squad/NonTestedTroop"]
+[editable path="Squad/NonTestedTroop/BaseTroopPreview"]
+[editable path="Zones/South"]
+[editable path="Zones/North"]
+[editable path="Zones/West"]
+[editable path="Zones/East"]
+[editable path="Zones/BehindOtherTroop"]

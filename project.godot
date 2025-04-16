@@ -15,21 +15,24 @@ run/main_scene="res://Tests/Scenes/movement_test.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneScout="*res://addons/GD_NET_ScOUT/SceneScout.cs"
+
 [dotnet]
 
 project/assembly_name="Battle Monster"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/GD_NET_ScOUT/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Scripts/": "green",
 "res://Tests/": "yellow",
-"res://Tests/Scenes/": "purple",
-"res://Tests/Unit/": "yellow",
+"res://Tests/Scenes/": "yellow",
 "res://battle/": "purple"
 }
 

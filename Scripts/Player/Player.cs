@@ -10,6 +10,7 @@ public interface IClickable
 
 public partial class Player : Node3D
 {
+    private const float _rayCastLenght = 1000;
     RayCast3D _rayCast;
     Camera3D _camera;
     Squads.Squad _squad;
@@ -37,42 +38,49 @@ public partial class Player : Node3D
     public override void _UnhandledInput(InputEvent @event)
     {
         // Check for left mouse button click
-        if (@event is InputEventMouseButton mouseEvent)
+        switch (@event)
         {
-            if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
-            {
-                try
+            case InputEventMouseButton mouse:
+                if (!mouse.Pressed) return;
+                
+                switch (mouse.ButtonIndex)
                 {
-                    CastRayFrom(mouseEvent.Position);
-
-                    if (_rayCast.IsColliding())
-                    {
-                        var colider = _rayCast.GetCollider();
-
-                        if (colider is IClickable)
+                    case (MouseButton.Left):
+                        try
                         {
-                            ((IClickable)colider).Clicked();
+                            CastRayFrom(mouse.Position);
+
+                            if (_rayCast.IsColliding())
+                            {
+                                var collider = _rayCast.GetCollider();
+
+                                if (collider is IClickable)
+                                {
+                                    ((IClickable)collider).Clicked();
+                                }
+                                else
+                                {
+                                    Vector3 collisionPosition = _rayCast.GetCollisionPoint();
+                                    MoveCharacterTo(collisionPosition);
+                                }
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            Vector3 collisionPosition = _rayCast.GetCollisionPoint();
-                            MoveCharacterTo(collisionPosition);
+                            GD.PrintErr("Error al procesar el raycast: ", ex.Message);
                         }
-                    }
+                        break;
                 }
-                catch (Exception ex)
-                {
-                    GD.PrintErr("Error al procesar el raycast: ", ex.Message);
-                }
-            }
+                break;
         }
+        
     }
 
 
     private void CastRayFrom(Vector2 positionOnScreen)
     {
         Vector3 from = _camera.ProjectRayOrigin(positionOnScreen);
-        Vector3 to = from + _camera.ProjectLocalRayNormal(positionOnScreen) * 1000;
+        Vector3 to = from + _camera.ProjectLocalRayNormal(positionOnScreen) * _rayCastLenght;
 
 
         _rayCast.TargetPosition = to;

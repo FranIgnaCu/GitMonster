@@ -3,9 +3,9 @@ using Godot;
 namespace BattleMonster.Scripts;
 
 // En el juego debo recordar de cambiar de Node3D a Mesh e intentar agrupar el selector en uno
-// Deberia de crear un grupo donde meter todas las mesh que quiero que cambien
+// Debera de crear un grupo donde meter todas las mesh que quiero que cambien
 // Esto para poder cambiar el material entre selected y unselected y poder hacerlo con 
-// distintos Mesh si en algun momento quiero cambiar el diseño y asi mantener algunos sin cambio
+// distintos Mesh si en algún momento quiero cambiar el diseño y asi mantener algunos sin cambio
 public interface ISelectable{
     void InformSelected();
     void InformUnSelected();
